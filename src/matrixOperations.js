@@ -1,25 +1,10 @@
-/**
- * Matrix Operations Module
- * Pure mathematical operations for matrix calculations
- */
 
-/**
- * Creates a new matrix filled with zeros
- * @param {number} rows - Number of rows
- * @param {number} cols - Number of columns
- * @returns {number[][]} Zero-filled matrix
- */
+
 const createMatrix = (rows, cols) => {
   return Array.from({ length: rows }, () => Array(cols).fill(0));
 };
 
-/**
- * Adds two matrices of the same dimensions
- * @param {number[][]} matrixA - First matrix
- * @param {number[][]} matrixB - Second matrix
- * @returns {number[][]} Resultant matrix
- * @throws {Error} If matrices have different dimensions
- */
+
 const addMatrices = (matrixA, matrixB) => {
   if (!sameDimensions(matrixA, matrixB)) {
     throw new Error('Matrices must have the same dimensions for addition');
@@ -27,13 +12,7 @@ const addMatrices = (matrixA, matrixB) => {
   return matrixA.map((row, i) => row.map((val, j) => val + matrixB[i][j]));
 };
 
-/**
- * Subtracts matrixB from matrixA
- * @param {number[][]} matrixA - First matrix
- * @param {number[][]} matrixB - Second matrix
- * @returns {number[][]} Resultant matrix
- * @throws {Error} If matrices have different dimensions
- */
+
 const subtractMatrices = (matrixA, matrixB) => {
   if (!sameDimensions(matrixA, matrixB)) {
     throw new Error('Matrices must have the same dimensions for subtraction');
@@ -41,32 +20,16 @@ const subtractMatrices = (matrixA, matrixB) => {
   return matrixA.map((row, i) => row.map((val, j) => val - matrixB[i][j]));
 };
 
-/**
- * Multiplies a matrix by a scalar value
- * @param {number[][]} matrix - Input matrix
- * @param {number} scalar - Scalar value
- * @returns {number[][]} Resultant matrix
- */
+
 const scalarMultiply = (matrix, scalar) => {
   return matrix.map(row => row.map(val => val * scalar));
 };
 
-/**
- * Transposes a matrix (rows become columns)
- * @param {number[][]} matrix - Input matrix
- * @returns {number[][]} Transposed matrix
- */
+
 const transposeMatrix = (matrix) => {
   return matrix[0].map((_, i) => matrix.map(row => row[i]));
 };
 
-/**
- * Multiplies two matrices (matrixA × matrixB)
- * @param {number[][]} matrixA - First matrix
- * @param {number[][]} matrixB - Second matrix
- * @returns {number[][]} Resultant matrix
- * @throws {Error} If matrices cannot be multiplied
- */
 const multiplyMatrices = (matrixA, matrixB) => {
   if (!canMultiply(matrixA, matrixB)) {
     throw new Error('Number of columns in A must match rows in B for multiplication');
@@ -83,12 +46,7 @@ const multiplyMatrices = (matrixA, matrixB) => {
   return result;
 };
 
-/**
- * Calculates the determinant of a square matrix
- * @param {number[][]} matrix - Input matrix
- * @returns {number} Determinant value
- * @throws {Error} If matrix is not square
- */
+
 const determinant = (matrix) => {
   if (!isSquare(matrix)) {
     throw new Error('Matrix must be square to calculate determinant');
@@ -109,12 +67,7 @@ const determinant = (matrix) => {
   return det;
 };
 
-/**
- * Calculates the inverse of a matrix
- * @param {number[][]} matrix - Input matrix
- * @returns {number[][]} Inverted matrix
- * @throws {Error} If matrix is singular or not square
- */
+
 const inverseMatrix = (matrix) => {
   if (!isSquare(matrix)) {
     throw new Error('Only square matrices can be inverted');
